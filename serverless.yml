@@ -17,7 +17,13 @@ provider:
   environment:
     SERVICE: ${self:service}
 
-functions: {}
+functions:
+  Example:
+    handler: src/index.handler
+    events:
+      - httpApi:
+          path: /
+          method: get
 
 resources:
   Resources: {}
