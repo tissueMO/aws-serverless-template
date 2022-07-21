@@ -1,0 +1,37 @@
+service: APPLICATION-NAME
+frameworkVersion: '3'
+useDotenv: true
+
+provider:
+  name: aws
+  region: ap-northeast-1
+  runtime: nodejs16.x
+  lambdaHashingVersion: '20201221'
+  endpointType: regional
+  logRetentionInDays: 7
+  deploymentBucket:
+    blockPublicAccess: true
+    serverSideEncryption: AES256
+  httpApi:
+    cors: true
+  environment:
+    SERVICE: ${self:service}
+
+functions: {}
+
+resources:
+  Resources: {}
+
+package:
+  patterns:
+    - 'node_modules/**'
+    - 'src/**'
+    - '!dist/**'
+    - 'package.json'
+    - 'yarn.lock'
+    - '!serverless.yml'
+
+plugins:
+  - serverless-offline
+
+custom: {}

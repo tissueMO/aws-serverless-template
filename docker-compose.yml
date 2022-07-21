@@ -1,0 +1,14 @@
+version: '3.8'
+services:
+  app:
+    build: .
+    tty: true
+    ports:
+      - 3000:3000
+    volumes:
+      - ./.aws:/home/node/.aws
+      - ./node_modules:/app/node_modules
+      - ./src:/app/src
+      - ./package.json:/app/package.json
+      - ./yarn.lock:/app/yarn.lock
+      - ./serverless.yml:/app/serverless.yml
